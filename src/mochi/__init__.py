@@ -115,5 +115,5 @@ def get_game(filestore, game_tag=None, slug=None):
         return None 
     games = list_games(filestore)
     for game in games:
-        if game.game_tag == game_tag or game.slug == slug:
+        if ( hasattr(game, 'game_tag') and game.game_tag == game_tag) or game.slug == slug:
             return game
