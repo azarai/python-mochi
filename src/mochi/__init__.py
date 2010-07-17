@@ -12,7 +12,7 @@ else:
 
 __MOCHI_FEED = 'http://www.mochimedia.com/feeds/games/'
 __MOCHI_FEED_FORMAT_SUFFIX = '/?format=json;'
-__MOCHI_URL_PREFIX = 'http://.*\.mochiads\.com/c/g/'
+MOCHI_URL_PREFIX = 'http://.*\.mochiads\.com/c/g/'
 
 class Game():
     """
@@ -34,7 +34,7 @@ class Game():
         @rtype: string
         @return: filename of the swf
         """
-        return re.sub(__MOCHI_URL_PREFIX, "", self.swf_url)
+        return re.sub(MOCHI_URL_PREFIX, "", self.swf_url)
    
     def get_thumb_url(self):
         """
@@ -43,7 +43,7 @@ class Game():
         @rtype: string
         @return: url of the thumbnail
         """
-        return re.sub(__MOCHI_URL_PREFIX, "", self.thumbnail_url)
+        return re.sub(MOCHI_URL_PREFIX, "", self.thumbnail_url)
 
     def get_zip_filename(self):
         """
@@ -52,7 +52,7 @@ class Game():
         @rtype: string
         @return: filename of the game zipfile
         """
-        return re.sub(__MOCHI_URL_PREFIX, "", self.zip_url)
+        return re.sub(MOCHI_URL_PREFIX, "", self.zip_url)
    
     def __getattr__(self, name):
         if self.data.has_key(name):
