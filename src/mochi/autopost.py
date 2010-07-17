@@ -1,5 +1,5 @@
 # -*- coding: UTF-8 -*-
-from mochi import MOCHI_FEED, MOCHI_FEED_FORMAT_SUFFIX, Game, check_mochi_zip, get_game
+from mochi import __MOCHI_FEED, __MOCHI_FEED_FORMAT_SUFFIX, Game, check_mochi_zip, get_game
 from os.path import basename
 from shutil import copyfileobj
 from urlparse import urlsplit
@@ -47,10 +47,10 @@ def __download(url, store_location= None, local_filename = None ):
             
 def fetch_game(publisher_id, game_tag, filestore):
     """
-    Fetches a game zip from mochi and extracts its content to disk
+    Fetches a game zip from mochiads and extracts its content to disk
     
     @type publisher_id: string
-    @param publisher_id: Your Mochi Publisherid  
+    @param publisher_id: Your mochiads Publisherid  
     
     @type game_tag: string
     @param game_tag: the game_tag of the game to fetch
@@ -58,7 +58,7 @@ def fetch_game(publisher_id, game_tag, filestore):
     @type filestore: string
     @param filestore: A directory to extract the game content 
     """
-    full_url = MOCHI_FEED + publisher_id + '/'+game_tag + MOCHI_FEED_FORMAT_SUFFIX
+    full_url = __MOCHI_FEED + publisher_id + '/'+game_tag + __MOCHI_FEED_FORMAT_SUFFIX
     response = urllib2.urlopen(full_url)
     game_info =json.load(response)
     game = Game(game_info['games'][0]) 
